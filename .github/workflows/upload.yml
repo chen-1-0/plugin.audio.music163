@@ -39,8 +39,12 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ env.NAME }}-${{ env.VERSION }}-python3
-          path: ${{ env.NAME }}
+          path: ./
       - name: Change python version
         run: |
-          pwd
-          ls
+          sed -i "s/3\.0\.0/2\.7\.0/g" ./addon.xml
+      - name: Upload addon
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ env.NAME }}-${{ env.VERSION }}-python2
+          path: ./
