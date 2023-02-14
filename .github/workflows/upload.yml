@@ -20,7 +20,7 @@ jobs:
       - name: Get version
         run: |
           name=$(basename $(pwd))
-          echo "NAME=$name"
+          echo "NAME=$name" >> $GITHUB_ENV
           ver=$(cat addon.xml | grep $name | grep -o "[0-9]\.[\.0-9]*")
           echo "VERSION=$ver" >> $GITHUB_ENV
           
